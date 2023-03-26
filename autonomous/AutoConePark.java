@@ -35,9 +35,8 @@ public class AutoConePark extends LinearOpMode {
     public void runOpMode() {
         
         BruteForceRobot robot = new BruteForceRobot(hardwareMap);
-        robot.moveClaw(-1);
+        //robot.moveClaw(-1);
         double lastVSpos = 0;
-        double lastVSpos2 = 0;
         
         TensorFlowUtils utils = new TensorFlowUtils(hardwareMap);
         
@@ -92,10 +91,8 @@ public class AutoConePark extends LinearOpMode {
         
         
         int start = 0;
-        int startSlide1 = robot.viperSlide.getCurrentPosition();
-        int startSlide2 = robot.viperSlide2.getCurrentPosition();
-        int startRot = robot.clawRot.getCurrentPosition();
-        telemetry.addData("Start of Slide 1&2 and ClawRot:", "Starting at %7d :%7d :%7d", startSlide1, startSlide2, startRot);
+        int startSlide = robot.viperSlide.getCurrentPosition();
+        telemetry.addData("Start of Slide:", "Starting at %7d", startSlide);
         telemetry.update();
         
         telemetry.addData("Mode", "waiting for start");
@@ -113,11 +110,10 @@ public class AutoConePark extends LinearOpMode {
         double close = -0.7;
         double open = 0.2;
         
-        robot.moveClaw(close);
+        //robot.moveClaw(close);
         sleep(500);
         
         boolean flipped = false;
-        double holdingRot = 0.0005;
         double holdingSlide = -0.0005;
         
         robot.resetAngle(globalAngle);
@@ -125,8 +121,8 @@ public class AutoConePark extends LinearOpMode {
         correction = robot.checkDirectionB(globalAngle, telemetry);
         
         //move clawRot up
-        robot.encoderRot(startRot + 500);
-        robot.moveClawRot(holdingRot);
+        //robot.encoderRot(startRot + 500);
+        //robot.moveClawRot(holdingRot);
         
         //move robot backward to the third tile
         robot.encoderDriveIMU("b", 55, globalAngle, 5, opModeIsActive(), telemetry);
@@ -138,24 +134,24 @@ public class AutoConePark extends LinearOpMode {
         robot.encoderDriveIMU("rr", 14.5, globalAngle, 5, opModeIsActive(), telemetry);
         
         //move clawRot up
-        robot.encoderRot(startRot + 2000);
-        robot.moveClawRot(holdingRot);
+        //robot.encoderRot(startRot + 2000);
+        //robot.moveClawRot(holdingRot);
         
         //move robot backward
         robot.encoderDriveIMU("f", 3.25, globalAngle, 5, opModeIsActive(), telemetry);
         
         //move clawRot up
-        robot.encoderRot(startRot + 2200);
-        robot.moveClawRot(holdingRot);
+        //robot.encoderRot(startRot + 2200);
+        //robot.moveClawRot(holdingRot);
         sleep(500);
         
         //open claw
-        robot.moveClaw(open);
+        //robot.moveClaw(open);
         sleep(500);
         
         //move clawRot back down
-        robot.encoderRot(startRot + 475);
-        robot.moveClawRot(holdingRot);
+        //robot.encoderRot(startRot + 475);
+        //robot.moveClawRot(holdingRot);
         
         //move backwards
         robot.encoderDriveIMU("b", 12, globalAngle, 5, opModeIsActive(), telemetry);
@@ -167,12 +163,12 @@ public class AutoConePark extends LinearOpMode {
         robot.encoderDriveIMU("b", 11.5, globalAngle, 5, opModeIsActive(), telemetry);
         
         //close claw
-        robot.moveClaw(close);
+        //robot.moveClaw(close);
         sleep(500);
         
         //move clawRot up
-        robot.encoderRot(startRot + 1000);
-        robot.moveClawRot(holdingRot);
+        //robot.encoderRot(startRot + 1000);
+        //robot.moveClawRot(holdingRot);
         
         //move backwards
         robot.encoderDriveIMU("f", 10, globalAngle, 5, opModeIsActive(), telemetry);
@@ -184,17 +180,17 @@ public class AutoConePark extends LinearOpMode {
         robot.encoderDriveIMU("f", 10, globalAngle, 5, opModeIsActive(), telemetry);
         
         //move clawRot up
-        robot.encoderRot(startRot + 2200);
-        robot.moveClawRot(holdingRot);
+        //robot.encoderRot(startRot + 2200);
+        //robot.moveClawRot(holdingRot);
         sleep(500);
         
         //open claw
-        robot.moveClaw(open);
+        //robot.moveClaw(open);
         sleep(500);
         
         //move clawRot down
-        robot.encoderRot(startRot);
-        robot.moveClawRot(holdingRot);
+        //robot.encoderRot(startRot);
+        //robot.moveClawRot(holdingRot);
         sleep(500);
         
         //move backward
